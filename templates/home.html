@@ -26,17 +26,17 @@
             <ul>
                 <li><a href="">Home</a> </li>
                 {% if request.user.is_anonymous %}
-                <li><a href="javascipt:;" onclick="displayModal('login-modal');">Login</a> </li>
-                <li><a href="javascipt:;" onclick="displayModal('signup-modal');">SignUp</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('login-modal');">Login</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('signup-modal');">SignUp</a> </li>
                 {% else %}
-                <li><a href="javascipt:;" onclick="document.getElementById('logout-btn').click();">LogOut</a> </li>
+                <li><a href="javascript:;" onclick="document.getElementById('logout-btn').click();">LogOut</a> </li>
                 <form hidden = "true" action= "." method="POST">
                     {% csrf_token %}
                     <input type = "submit" id ="logout-btn" name="logout">
                 </form>
 
-                <li><a href="javascipt:;" onclick="displayModal('password-modal');">View</a> </li>
-                <li><a href="javascipt:;" onclick="displayModal('add-password-modal');">Add</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('password-modal');">View</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('add-password-modal');">Add</a> </li>
                 {% endif %}
             </ul>
         </nav>
@@ -128,7 +128,7 @@
         {% for password in passwords %}
         <div class="card">
             <div class="actions">&nbsp;Actions
-                <a href="javascipt:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
+                <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
                 <form hidden = "true" action= "." method="POST">
                     {% csrf_token %}
                     <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}"

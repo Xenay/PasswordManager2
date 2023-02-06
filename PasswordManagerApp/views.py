@@ -14,7 +14,7 @@ from .models import Password
 br = Browser()
 br.set_handle_robots(False)
 
-fernet = Fernet(settings.KEY.encode())
+fernet = Fernet(settings.KEY)
 
 def home(request):
     if request.method == "POST":
