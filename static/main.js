@@ -11,11 +11,12 @@ if(modalWrapper){
         //close modal
         const close = document.getElementById("close-modal");
         close.addEventListener("click",() => {
-            modalWrapper.style.display = "none ";
+            modalWrapper.style.display = "none";
             modal.style.display = "none";
         })
     }
 }
+
 
 //copy to clipboard
 const copies = document.querySelectorAll(".copy");

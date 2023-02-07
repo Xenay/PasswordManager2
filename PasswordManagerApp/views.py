@@ -111,6 +111,7 @@ def home(request):
                 password = encrypted_password.decode(),
             )
             msg = "Password has been saved successfully"
+            
             messages.success(request,msg)
             return HttpResponseRedirect(request.path)
 
@@ -123,7 +124,7 @@ def home(request):
             
     context = {}
     if request.user.is_authenticated:
-        passwords = Password.objects.all().filter(user = request.user.id)
+        passwords = Password.objects.all().filter(user = request.user)
         for password in passwords:
             password.email = fernet.decrypt(password.email.encode()).decode()
             password.password = fernet.decrypt(password.password.encode()).decode()
@@ -131,4 +132,4 @@ def home(request):
             "passwords": passwords,
         }
 
-    return render(request, "home.html", )
+    return render(request, "home.html",context)

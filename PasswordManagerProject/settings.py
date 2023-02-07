@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-from decouple import config
+#from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -117,6 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL='/static/'
+
 if not DEBUG:
     STATIC_ROOT=BASE_DIR / 'static'
 else:
@@ -136,4 +137,4 @@ EMAIL_HOST_PASSWORD = "lopqpdiujeiuyizk"
 EMAIL_USE_TLS = True
 
 KEY = b'SiZZF1cgSt1mWsUR3_cetn0ybXLbIy63Q-FZJEoHYpQ='
-config('KEY')
+#config('KEY')

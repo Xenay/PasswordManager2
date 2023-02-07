@@ -11,9 +11,10 @@
         Django Password Manager
     </title>
     
-    <link rel = "stylesheet" href="{%static 'style.css' %}">
-    <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="{%static 'main.js' %}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <script src="{% static 'main.js' %}" defer></script>
 
 
 </head>
@@ -35,8 +36,8 @@
                     <input type = "submit" id ="logout-btn" name="logout">
                 </form>
 
-                <li><a href="javascript:;" onclick="displayModal('password-modal');">View</a> </li>
-                <li><a href="javascript:;" onclick="displayModal('add-password-modal');">Add</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('password-modal');">View</a></li>
+                <li><a href="javascript:;" onclick="displayModal('add-password-modal');">Add</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -45,7 +46,7 @@
 
     <!--displayMessages-->
 
-    {%if messages %}
+    {% if messages %}
     <div class= "messages" style= "text-align: center;">
         {% for message in messages%}
             <p>
@@ -84,7 +85,7 @@
                 <h2>
                     Login
                 </h2>
-                <input type="text" name="username" id = "username" placeholder="user">
+                <input type="text" name="username" placeholder="user">
                 <input type="password" name="password" placeholder="password">
                 <input type="submit" value="login" name = "login-form">
             </form>
@@ -131,7 +132,7 @@
                 <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
                 <form hidden = "true" action= "." method="POST">
                     {% csrf_token %}
-                    <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}"
+                    <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}">
                     <input type = "submit" id ="delete-btn{{password.id}}" name="delete">
                 </form>
                 
@@ -140,8 +141,8 @@
             <div class="name">{{password.name}}</div>
             <!--password login-->
             
-            <input type="email" name="email" value ="{{password.email}}" ><i class="fas fa-copy copy" title="copy to clipboard"></i>
-            <input type="password" name="username" value="{{password.password}}"> <i class="fas fa-copy copy" title="copy to clipboard"></i>
+            <input type="email" name="email" value ="{{password.email}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
+            <input type="password" name="username" value="{{password.password}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
            
         
         </div>
