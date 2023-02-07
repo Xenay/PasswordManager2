@@ -125,30 +125,27 @@
 
     </div>
     <!--cards-->
-    <div class="container">
-        {% for password in passwords %}
-        <div class="card">
-            <div class="actions">&nbsp;Actions
-                <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
-                <form hidden = "true" action= "." method="POST">
-                    {% csrf_token %}
-                    <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}">
-                    <input type = "submit" id ="delete-btn{{password.id}}" name="delete">
-                </form>
-                
-            </div>
-            <img height="50" width="50" src="{{password.logo}}" alt="">
-            <div class="name">{{password.name}}</div>
-            <!--password login-->
-            
-            <input type="email" name="email" value ="{{password.email}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
-            <input type="password" name="username" value="{{password.password}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
-           
-        
-        </div>
-        {% endfor %}
-        
-    </div>  
+<!--cards-->
+<div class="container">
+    {% for password in passwords %}
+    <div class="card">
+      <div class="actions">&nbsp;Actions
+        <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
+        <form hidden = "true" action= "." method="POST">
+          {% csrf_token %}
+          <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}">
+          <input type = "submit" id ="delete-btn{{password.id}}" name="delete">
+        </form>
+      </div>
+      <img height="50" width="50" src="{{password.logo}}" alt="">
+      <div class="name">{{password.name}}</div>
+      <!--password login-->
+      <input type="email" name="email" value ="{{password.email}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
+      <input type="password" name="username" id = "PasswordBox{{password.id}}" value="{{password.password}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
+      <input type="checkbox" onclick="toggleVisibility('PasswordBox{{password.id}}')"> Show Password
+    </div>
+    {% endfor %}
+  </div>
 
     <footer>
         <a href="">Link to the project</a>

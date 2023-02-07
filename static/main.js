@@ -20,10 +20,19 @@ if(modalWrapper){
 
 //copy to clipboard
 const copies = document.querySelectorAll(".copy");
-copies.forEach(copy =>{
-    copy.onclick= ()=>{
+copies.forEach(copy => {
+    copy.addEventListener("click", () => {
         let elementToCopy = copy.previousElementSibling;
         elementToCopy.select();
         document.execCommand("copy");
+    });
+});
+
+function toggleVisibility(id) {
+    var x = document.getElementById(id);
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
     }
-})
+  }
