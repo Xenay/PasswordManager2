@@ -23,21 +23,19 @@
 <body>
     <header>
         <nav>
-            <div class="brand"><a href ""><i class="fa fa-lock" aria-hidden="true">&nbsp; Password Manager</i></a></div>
+            <div class="brand"><a href "" style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fa fa-lock" aria-hidden="true" ></i>&nbsp; Password Manager</a></div>
             <ul>
-                <li><a href="">Home</a> </li>
                 {% if request.user.is_anonymous %}
-                <li><a href="javascript:;" onclick="displayModal('login-modal');">Login</a> </li>
-                <li><a href="javascript:;" onclick="displayModal('signup-modal');">SignUp</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('login-modal');" style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Login</a> </li>
+                <li><a href="javascript:;" onclick="displayModal('signup-modal');" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">SignUp</a> </li>
                 {% else %}
-                <li><a href="javascript:;" onclick="document.getElementById('logout-btn').click();">LogOut</a> </li>
+                <li><a href="javascript:;" onclick="document.getElementById('logout-btn').click();" style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">LogOut</a> </li>
                 <form hidden = "true" action= "." method="POST">
                     {% csrf_token %}
                     <input type = "submit" id ="logout-btn" name="logout">
                 </form>
 
-                <li><a href="javascript:;" onclick="displayModal('password-modal');">View</a></li>
-                <li><a href="javascript:;" onclick="displayModal('add-password-modal');">Add</a></li>
+                <li><a href="javascript:;" onclick="displayModal('add-password-modal');" style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Add</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -66,9 +64,9 @@
         <div style= "text-align:center;">
             <form action="." method = "POST" role = "form">
                 {% csrf_token %}
-                <h2> Please confirm your email </h2>
-                <p> Check your email and get the code </p>
-                <input type = "text" name = "code" placeholder= "enter the 6 digit code">
+                <h2 style="margin: 2em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Please confirm your email </h2>
+                <p style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Check your email and get the code </p>
+                <input type = "text" name = "code" placeholder= "Enter the 6 digit code">
                 <input type = "text" hidden = "true" name = "user" value = "{{user.username}}">
                 <input type ="submit" value = "Confirm" name = "confirm">
         </div>
@@ -77,49 +75,49 @@
 
     <!--Modals-->
     <div class="modals-wrapper">
-        <span id="close-modal" title="close"><i class="fa fa-times"></i></span>
+    
         <!--login-->
+
         <div class="modal" id="login-modal">
             <form action="." role="form" method="POST">
                 {% csrf_token %}
-                <h2>
+                <h2 style="margin: 2em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                     Login
                 </h2>
-                <input type="text" name="username" placeholder="user">
-                <input type="password" name="password" placeholder="password">
-                <input type="submit" value="login" name = "login-form">
+                <input type="text" name="username" placeholder="User">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value="Login" name = "login-form">
             </form>
         </div>
+  
 
             <!--signup login-->
             <div class="modal" id="signup-modal">
                 <form action="." role="form" method="POST">
                     {% csrf_token %}
-                    <h2>
+                    <h2 style="margin: 2em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                         Signup
                     </h2>
-                    <input type="text" name="username" placeholder="user">
-                    <input type="email" name="email" placeholder="email">
-                    <input type="password" name="password" placeholder="password">
-                    <input type="password" name="password2" placeholder="confirm password">
-                    <input type="submit" value="register" name = "signup-form" >
+                    <input type="text" name="username" placeholder="User">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password2" placeholder="Confirm password">
+                    <input type="submit" value="Register" name = "signup-form" >
                 </form>
             </div>
 
             
-            
-
               <!--add password login-->
-              <div class="modal" id="add-password-modal">
+              <div class="modal" id="add-password-modal" style="margin: 2em;">
                 <form action="." role="form" method = "POST">
                     {% csrf_token %}
-                    <h2>
+                    <h2 style="margin: 2em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                         Add new password
                     </h2>
-                    <input type="text" name="url" placeholder="url of the website">
-                    <input type="email" name="email" placeholder="email">
-                    <input type="password" name="password" placeholder="password">
-                    <input type="submit" value="save" name = "add-password" >
+                    <input type="text" name="url" placeholder="Url of the website">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" value="Save" name = "add-password" >
                 </form>
             </div>
 
@@ -129,27 +127,33 @@
 <div class="container">
     {% for password in passwords %}
     <div class="card">
-      <div class="actions">&nbsp;Actions
-        <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item">Delete</a>
+      
+      <img height="50" width="50" src="{{password.logo}}" alt="">
+      <div class="name" style="margin:1em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{password.name}}</div>
+
+      <!--password login-->
+      <input type="email" name="email" value ="{{password.email}}">
+      <a style="margin:1em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fas fa-copy copy" title="copy to clipboard" > </i>  Copy Username</a>
+      <input type="password" name="username" id = "PasswordBox{{password.id}}" value="{{password.password}}">
+      <a style="margin:1em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fas fa-copy copy" title="copy to clipboard" > </i>  Copy Password</a>
+     
+      <input type="checkbox" onclick="toggleVisibility('PasswordBox{{password.id}}')"> 
+      <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+      Show Password 
+      </div>
+
+        <a href="javascript:;" onclick= "document.getElementById('delete-btn{{password.id}}').click();" class="action-item" style="margin: 1em; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Delete</a>
         <form hidden = "true" action= "." method="POST">
           {% csrf_token %}
           <input type = "text" hidden = "true" name = "password-id" value = "{{password.id}}">
           <input type = "submit" id ="delete-btn{{password.id}}" name="delete">
         </form>
-      </div>
-      <img height="50" width="50" src="{{password.logo}}" alt="">
-      <div class="name">{{password.name}}</div>
-      <!--password login-->
-      <input type="email" name="email" value ="{{password.email}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
-      <input type="password" name="username" id = "PasswordBox{{password.id}}" value="{{password.password}}"><i class="fas fa-copy copy" title="copy to clipboard"></i>
-      <input type="checkbox" onclick="toggleVisibility('PasswordBox{{password.id}}')"> Show Password
+     
     </div>
     {% endfor %}
   </div>
 
-    <footer>
-        <a href="">Link to the project</a>
-    </footer>
+
 
 
 </body>
