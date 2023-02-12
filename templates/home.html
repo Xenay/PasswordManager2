@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     
-    
     <script src="{% static 'main.js' %}" defer></script>
    
   
@@ -134,6 +133,7 @@
     <!--cards-->
 <!--cards-->
 <div class="container">
+    
     {% for password in passwords %}
     <div class="card">
       
@@ -153,7 +153,8 @@
       
     </div>
     {% endfor %}
-  </div>
+</div>
+  
 
     <footer>
         <a href="">Link to the project</a>

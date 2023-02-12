@@ -85,7 +85,7 @@ footer{
 .modals-wrapper{
     width: 100%;
     height: 100%;
-    background-color: var(--global-text-color);
+    background-color: var(--global-background-color);
     display: none;
     justify-content: center;
     align-items: center;
